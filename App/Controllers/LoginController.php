@@ -46,7 +46,7 @@ class LoginController
 
       flash()->push('message', "Welcome " . $user->name . "!");
 
-      return redirect('/notes');
+      return redirect('/contacts');
     }
   }
 }
