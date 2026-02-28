@@ -5,11 +5,14 @@ CREATE TABLE users (
   password varchar(255) NOT NULL
 );
 
-CREATE TABLE notes (
+CREATE TABLE contacts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER,
-  title varchar(255) NOT NULL,
-  note TEXT NOT NULL,
+  name varchar(255) NOT NULL,
+  picture varchar(255) NULL,
+  phone TEXT NOT NULL,
+  email TEXT NOT NULL,
+  address TEXT NOT NULL,
   created_at timestamp,
   updated_at timestamp,
   FOREIGN KEY (user_id) REFERENCES users (id)
