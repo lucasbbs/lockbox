@@ -1,17 +1,19 @@
 <?php $validations = flash()->get('validations'); ?>
-<div class="grid grid-cols-2">
+<div class="grid grid-cols-1 sm:grid-cols-2">
 
-  <div class="hero min-h-screen flex ml-40">
-    <div class="hero-content -mt-20">
+  <div class="hero min-h-[150px] sm:min-h-screen flex pl-0 sm:pl-10 md:pl-20 lg:pl-40 login-background-blur place-items-start pt-20">
+    <div class="hero-content -mt-20 text-white">
       <div>
         <p class="py-2 text-xl">Welcome to</p>
-        <h1 class="text-6xl font-bold">Lock Box</h1>
+        <div class="text-4xl font-bold flex gap-1.5"> <img src="./images/guard_logo.svg" alt="">
+          <h1>Guard</h1>
+        </div>
         <p class="py-2 pb-4 text-xl">where you keep <span class="italic">everything</span> safe</p>
       </div>
     </div>
   </div>
 
-  <div class="bg-white hero mr-40 min-h-screen text-black">
+  <div class="bg-white hero mr-40 min-h-screen text-white background-guest-action">
     <div class="hero-content -mt-20">
       <form method="POST" action="/login">
         <div class="card">
@@ -20,10 +22,10 @@
             <?php require base_path('views/partials/_message.view.php'); ?>
             <label class="form-control">
               <div class="label">
-                <span class="label-text text-black">Email</span>
+                <span class="label-text text-white">Email</span>
               </div>
 
-              <input type="text" name="email" class="input w-full max-w-xs bg-white" value="<?= old('email') ?>" />
+              <input type="text" name="email" class="input w-full max-w-xs guard" placeholder="Enter your email" value="<?= old('email') ?>" />
 
               <?php if (isset($validations['email'])): ?>
                 <div class="mt-1 text-xs text-error"><?= $validations['email'][0] ?></div>
@@ -32,18 +34,18 @@
 
             <label class="form-control">
               <div class="label">
-                <span class="label-text text-black">Password</span>
+                <span class="label-text text-white">Password</span>
               </div>
 
-              <input type="password" name="password" class="input w-full max-w-xs bg-white" />
+              <input type="password" name="password" class="input w-full max-w-xs guard" placeholder="Enter your password" />
               <?php if (isset($validations['password'])): ?>
                 <div class="mt-1 text-xs text-error"><?= $validations['password'][0] ?></div>
               <?php endif; ?>
             </label>
 
-            <div class="card-actions">
-              <button class="btn btn-primary btn-block">Login</button>
-              <a href="/register" class="btn btn-link">Don't have an account?</a>
+            <div class="card-actions flex flex-col">
+              <button class="btn btn-login btn-block w-fit self-end">Access account</button>
+              <div class="flex gap-2"><span class="text-white">Don't have an account?</span> <a href="/register" class="brand">Create account</a></div>
             </div>
           </div>
         </div>
