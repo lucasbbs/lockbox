@@ -20,4 +20,21 @@ class Request
       ? ($prefix ?: null) . $_POST[$key]
       : $default;
   }
+
+  public function file($key = null, $default = null)
+  {
+    if ($key === null) {
+      return $_FILES;
+    }
+    if (! isset($_FILES[$key]) || ! is_array($_FILES[$key])) {
+      return $default;
+    }
+
+    $file = $_FILES[$key];
+    if (($file['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_NO_FILE) {
+      return $default;
+    }
+
+    return $file;
+  }
 }
