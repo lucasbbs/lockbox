@@ -25,6 +25,37 @@ function view($view, $data = [], $template = 'app')
 
     require base_path("views/template/$template.php");
 }
+
+function capture(callable $callback): string
+{
+
+    ob_start();
+
+    $callback();
+
+    return ob_get_clean();
+}
+
+function partial(string $view, array $data = [], $slot = null): void
+{
+
+    if (is_callable($slot)) {
+
+        $slot = capture($slot);
+    }
+
+    if ($slot !== null) {
+
+        $data['slot'] = $slot;
+    }
+
+    foreach ($data as $key => $value) {
+
+        $$key = $value;
+    }
+
+    require base_path("views/{$view}.view.php");
+}
 function dd(...$dump)
 {
 
