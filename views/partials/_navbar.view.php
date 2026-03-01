@@ -7,11 +7,11 @@
       <li>
         <?php if (session()->get('show')): ?>
           <a href="/hide">
-            <img src="/images/eye-slash.svg" width="15">
+            <img src="/images/lock_opened.svg" width="15">
           </a>
         <?php else: ?>
           <a href="/confirm">
-            <img src="/images/eye.svg" width="15">
+            <img src="/images/lock_closed.svg" width="15">
           </a>
         <?php endif; ?>
       </li>
